@@ -1,0 +1,89 @@
+
+
+
+
+<div class="row g-0">
+    <div class="col-10 mx-auto ">
+      <div class="d-flex justify-content-center align-items-center flex-column my-5" >
+
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit values</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input (keyup)="onKey($event)" placeholder="name"><br><br>
+        <input (keyup)="onKey($event)" placeholder="email"><br><br>
+        <input (keyup)="onKey($event)" placeholder="role">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        <button (click)="delAll()">delete</button>
+        <input placeholder="search by name,email or role"  id="myInput" (keyup)="onKeyUp($event)" class="w-100 my-2" />
+  
+        <table id="myTable" class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">id</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Role</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let a of folderObjs ">
+              <th scope="row"><label>
+                <input value={{a.id}}  type="checkbox" (change)="GetStats($event)" [(ngModel)]="a.selected" />
+                
+              </label></th>
+             
+              <!-- <input #{{food.count}} [(ngModel)]="food.selected"></td> -->
+              
+              <td  >{{a.id}}</td>
+              <td>{{a.name}}</td>
+              <td>{{a.email}}</td>
+              <td>{{a.role}}</td>
+              <!-- <button id="remove" ></button> -->
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#exampleModal"  (click)="editDomain(a)">Edit</button>
+                <button type="button" (click)="deleteRow(a.id)" class="btn  btn-outline-danger"><i class="material-icons">delete</i></button>
+              </div>
+            </tr>
+         
+          </tbody>
+        </table>
+  
+        <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [maxSize]="5" [boundaryLinks]="true"
+        [pageSize]=10 class="d-flex justify-content-center"></ngb-pagination>
+       
+      </div>
+
+    
+  
+    </div>
+
+    
+  </div>
+
+
+  
+
+
+
+  
+
+ 
